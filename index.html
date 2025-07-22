@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Web Map Lisbeth</title>
+    <link rel="stylesheet" href="leaflet.css" />
+    <script src="leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>    
+    <link rel = "icon" href = "ugm.png" 
+    type = "image/x-icon">
+    <style>
+       body {
+        padding: 0;
+        margin: 0;
+        }
+        html, body, #map {
+        height: 100%;
+        width: 100%;
+        }
+        .leaflet-popup-content {
+        max-width: 200px;
+        height: 100px;
+        overflow-y: scroll;
+        }
+        .site-header {
+        background-color:rgb(233, 216, 189);
+        width: 100%;
+        }
+        .site-header h1 {
+        margin: 0;
+        padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+    <h1>Rute Kost Ke DTGD FT UGM</h1>
+    </header>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map', {
+            center: [-7.76342,110.37327],
+            zoom: 16
+        });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+    L.Routing.control({
+        waypoints: [
+        L.latLng(-7.75982,110.37383),
+        L.latLng(-7.76388,110.37280),
+        ],
+            lineOptions: {
+                styles: [{ color: 'blue', opacity: 1, weight: 3 }]
+            },
+            collapsible: true,
+            routeWhileDragging: true,
+            fitSelectedRoutes: true,
+    }).addTo(map) 
+
+    var marker =[] 
+    marker[0] = L.marker([-7.76388,110.37280],{
+        title: "DTGD FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Geodesi </h3> <p>Pada awal berdirinya yaitu pada bulan Agustus tahun 1959, DTGD masih merupakan program studi gabungan dengan program studi Teknik Geologi yang bernama Bagian Teknik Geodesi dan Geologi.</p> <img src ="./gambar/dtgd.jpeg" style="width:150px">')
+    marker[1] = L.marker([-7.76422,110.37306],{
+        title: "DTSL FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Sipil dan Lingkungan </h3> <p>Departemen Teknik Sipil dan Lingkungan (DTSL) Universitas Gadjah Mada memiliki fokus pada pengajaran, penelitian, dan pengembangan beberapa aspek Kelompok Bidang Keahlian (KBK): struktur, hidraulika, geoteknik, transportasi, dan lingkungan.</p> <img src ="./gambar/dtsl.jpg" style="width:150px">')    
+    marker[2] = L.marker([-7.76595,110.37314],{
+        title: "DTGL FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Geologi FT UGM</h3> <p>Departemen Teknik Geologi didirikan pada bulan Agustus 1959 sebagai bagian di Fakultas Teknik UGM yang berupa gabungan bagian Geodesi dan Geologi. Pada saat itu, Dekan Fakultas Teknik dijabat oleh Prof. Ir. Soepardi dan Sekretaris Fakultas oleh Prof. R. Soeroso Notohadiprawiro merangkap sebagai ketua bagian Geodesi-Geologi Teknik. Lokasi perkuliahan yang dipergunakan adalah beberapa ruangan di Sekip Unit IV.</p> <img src ="./gambar/dtgl.jpg" style="width:150px">')
+    marker[3] = L.marker([-7.76625,110.37282],{
+        title: "DTNTF FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Nuklir dan Teknik Fisika </h3> <p>DTNTF terdiri atas 2 program studi sarjana, yaitu Teknik Nuklir dan Teknik Fisika.</p> <img src ="./gambar/dtntf.jpg" style="width:150px">')    
+    marker[4] = L.marker([-7.76596,110.37162],{
+        title: "DTETI FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Elektro dan Teknologi Informasi </h3> <p>Departemen ini terdiri atas 3 program studi sarjana, yaitu Teknik Elektro, Teknologi Informasi, Teknik Biomedis</p> <img src ="./gambar/dteti.jpg" style="width:150px">')
+    marker[5] = L.marker([-7.76564,110.37103],{
+        title: "DTMI FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Mesin dan Industri </h3> <p>DTMI memiliki Program Studi Sarjana, Magister, dan Doktor di bidang Teknik Mesin dan Teknik Industri. </p> <img src ="./gambar/dtmi.jpg" style="width:150px">')   
+    marker[6] = L.marker([-7.76517,110.37133],{
+        title: "DTK FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Kimia </h3> <p>Departemen Teknik Kimia Fakultas Teknik UGM lahir dalam kancah revolusi Kemerdekaan Indonesia. Pada jaman penjajahan Belanda, di Indonesia hanya ada sebuah Perguruan Tinggi Teknik. Perguruan Tinggi Teknik ini berkedudukan di Bandung dengan nama Technische Hoogeschool yang didirikan Pemerintah Hindia Belanda pada tanggal 3 Juli 1920. Perguruan Tinggi ini memiliki Bagian Kimia, tetapi baru pada tingkat permulaan.</p> <img src ="./gambar/dtk.jpg" style="width:150px">')  
+    marker[7] = L.marker([-7.76381,110.37208],{
+        title: "DTAP FT UGM"
+    }).addTo(map).bindPopup(
+        '<h3> Departemen Teknik Arsitektur dan Perencanaan </h3> <p>Departemen Teknik Arsitektur dan Perencanaan/DTAP dimulai dengan pembukaan program arsitektural sebagai bagian Fakultas Teknik pada 1962, pembukaan program Teknik Arsitektur ini tidak lepas dari peran Universitas California Los Angeles (UCLA) memberikan bantuan ke Fakultas Teknik UGM pada tahun 1957 hingga 1964.</p> <img src ="./gambar/dtap.jpg" style="width:150px">')  
+    marker[8] = L.marker([-7.75982,110.37383],{
+        title: "Kost Lisbeth"
+    }).addTo(map).bindPopup(
+        '<h3>Kost Putri Abi Pogung</h3>')
+    </script>
+
+</body>
+</html>
