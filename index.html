@@ -49,20 +49,6 @@
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Tambahkan Routing
-    L.Routing.control({
-      waypoints: [
-        L.latLng(-7.75982, 110.37383),
-        L.latLng(-7.76388, 110.37280)
-      ],
-      lineOptions: {
-        styles: [{ color: 'blue', opacity: 1, weight: 3 }]
-      },
-      collapsible: true,
-      routeWhileDragging: true,
-      fitSelectedRoutes: true,
-    }).addTo(map);
-
     // Marker & Popup
     var lokasi = [
       {
