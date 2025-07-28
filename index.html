@@ -9,10 +9,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <!-- Leaflet Search Plugin -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.css" />
-  <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -81,44 +77,49 @@
     // Data lokasi
     var lokasi = [
       {
+        koordinat: [-1.666007, 114.893982],
+        title: "Danau Sanggu",
+        popup: "<h3>Danau Sanggu</h3><p class='popup-justify'>Danau Sanggu.</p><img src='./foto/Danau Sanggu.jpeg' style='width:150px'>"
+      },
+      {
+        koordinat: [-1.687491, 114.890469],
+        title: "Danau Malawen",
+        popup: "<h3>Danau Malawen</h3><p class='popup-justify'>Danau Malawen.</p><img src='./foto/Danau Malawen.jpg' style='width:150px'>"
+      },
+      {
+        koordinat: [-1.656995, 114.926560],
+        title: "Lewu Betang Nansarunai",
+        popup: "<h3>Lewu Betang Nansarunai</h3><p class='popup-justify'>Lewu Betang Nansarunai.</p><img src='./foto/Betang.jpeg' style='width:150px'>"
+      },
+      {
+        koordinat: [-1.67004, 114.90543],
+        title: "Pemandian Banyu Habang",
+        popup: "<h3>Pemandian Banyu Habang</h3><p class='popup-justify'>Pemandian Banyu Habang.</p><img src='./foto/Banyu Habang.JPG' style='width:150px'>"
+      },
+      {
+        koordinat: [-1.67016, 114.90573],
+        title: "Pemandian Wenu Janang",
+        popup: "<h3>Pemandian Wenu Janang</h3><p class='popup-justify'>Pemandian Wenu Janang.</p><img src='./foto/Wenu Janang.JPG' style='width:150px'>"
+      },
+      {
+        koordinat: [-1.67084, 114.90593],
+        title: "Pemandian Cendana Harum",
+        popup: "<h3>Pemandian Cendana Harum</h3><p class='popup-justify'>Pemandian Cendana Harum.</p><img src='./foto/Cendana Harum.JPG' style='width:150px'>"
+      },
+      {
         koordinat: [-1.67044, 114.90530],
         title: "Pemandian Air Merah Jaya Raya",
         popup: `
           <h3>Pemandian Air Merah Jaya Raya</h3>
-          <img src="./foto/Air Merah.JPG" style="width:150px;">
-          <p class="popup-justify">
+          <img src='./foto/Air Merah.JPG' style='width:150px'>
+          <p class='popup-justify'>
             Pemandian Air Merah Jaya Raya, yang mulai beroperasi sejak tahun 2022, menawarkan pengalaman wisata alam dengan harga tiket masuk sebesar Rp10.000 untuk orang dewasa dan Rp5.000 untuk anak-anak. Destinasi ini merupakan kawasan pemandian yang mengandalkan keindahan alami Sungai Wenu sebagai daya tarik utama, dengan ciri khas air berwarna merah. Pengunjung dapat menikmati berbagai aktivitas, seperti berenang, bermain air, atau sekadar bersantai bersama keluarga dan teman-teman sambil meresapi keasrian alam sekitar. Tempat ini terbuka untuk umum setiap hari dari pukul 06.00 hingga 18.00.
           </p>`
       },
       {
-        koordinat: [-1.6679, 114.9077],
-        title: "Danau Sanggu",
-        popup: `
-          <h3>Danau Sanggu</h3>
-          <img src="./foto/Danau Sanggu.JPG" style="width:150px;">
-          <p class="popup-justify">
-            Danau Sanggu merupakan salah satu ikon alam di Desa Sanggu yang dikenal akan keindahan alamnya dan keanekaragaman hayatinya. Pengunjung dapat menikmati keindahan danau sambil berjalan santai di sekitar area atau memancing.
-          </p>`
-      },
-      {
-        koordinat: [-1.6745, 114.9155],
-        title: "Danau Malowen",
-        popup: `
-          <h3>Danau Malowen</h3>
-          <img src="./foto/Danau Malowen.JPG" style="width:150px;">
-          <p class="popup-justify">
-            Danau Malowen adalah danau yang terletak di bagian selatan Desa Sanggu. Tempat ini menawarkan suasana tenang yang cocok untuk beristirahat dari hiruk-pikuk aktivitas sehari-hari.
-          </p>`
-      },
-      {
-        koordinat: [-1.6712, 114.8993],
-        title: "Pemandian Wenu Janang",
-        popup: `
-          <h3>Pemandian Wenu Janang</h3>
-          <img src="./foto/Wenu Janang.JPG" style="width:150px;">
-          <p class="popup-justify">
-            Pemandian alami yang masih mempertahankan sumber air dari Sungai Wenu. Airnya yang jernih dan segar membuat tempat ini menjadi destinasi favorit masyarakat lokal.
-          </p>`
+        koordinat: [-1.65867, 114.92616],
+        title: "Mambarak Forest",
+        popup: "<h3>Mambarak Forest</h3><p class='popup-justify'>Mambarak Forest.</p><img src='./foto/Mambarak Forest.JPG' style='width:150px'>"
       }
     ];
 
