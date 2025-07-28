@@ -9,10 +9,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-   <!-- Search versi CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@2.9.8/dist/leaflet-search.min.css" />
-  <script src="https://unpkg.com/leaflet-search@2.9.8/dist/leaflet-search.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -173,22 +169,7 @@
       markersLayer.addLayer(marker);
     });
 
-    // Tambahkan kontrol pencarian
-    var searchControl = new L.Control.Search({
-      layer: markersLayer,
-      propertyName: 'title',
-      marker: false,
-      moveToLocation: function(latlng, title, map) {
-        map.setView(latlng, 17);
-      }
-    });
-
-    searchControl.on('search:locationfound', function(e) {
-      e.layer.openPopup();
-    });
-
-    map.addControl(searchControl);
   </script>
 
 </body>
-</html> search masih blm muncul
+</html> 
