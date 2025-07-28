@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tempat Wisata Desa Sanggu</title>
 
-  <!-- Leaflet CSS dan JS dari CDN -->
+  <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Leaflet Routing Machine -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
   <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+
+  <!-- Leaflet Search Plugin -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search@2.9.8/dist/leaflet-search.min.css" />
+  <script src="https://unpkg.com/leaflet-control-search@2.9.8/dist/leaflet-search.min.js"></script>
 
   <link rel="icon" href="barito selatan.png" type="image/x-icon" />
 
@@ -31,6 +35,9 @@
       height: 100px;
       overflow-y: scroll;
     }
+    .popup-justify {
+      text-align: justify;
+    }
   </style>
 </head>
 <body>
@@ -41,67 +48,87 @@
   <div id="map"></div>
 
   <script>
-    // Inisialisasi Peta
-    var map = L.map('map').setView([-1.672800891733987, 114.91031253605072], 14);
+    var map = L.map('map').setView([-1.6728, 114.9103], 14);
 
-    // Basemap dari OSM
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Marker & Popup
+    var markers = L.layerGroup();
+
     var lokasi = [
       {
-        koordinat: [-1.666007036610256, 114.89398250906554],
+        koordinat: [-1.666007, 114.893982],
         title: "Danau Sanggu",
-        popup: "<h3>Danau Sanggu.</h3><p>Danau Sanggu.</p><img src='./foto/Danau Sanggu.jpeg' style='width:150px'>"
+        popup: "<h3>Danau Sanggu</h3><p class='popup-justify'>Danau Sanggu.</p><img src='./foto/Danau Sanggu.jpeg' style='width:150px'>"
       },
       {
-        koordinat: [-1.6874914116354776, 114.89046937054741],
+        koordinat: [-1.687491, 114.890469],
         title: "Danau Malawen",
-        popup: "<h3>Danau Malawen.</h3><p>Danau Malawen.</p><img src='./foto/Danau Malawen.jpg' style='width:150px'>"
+        popup: "<h3>Danau Malawen</h3><p class='popup-justify'>Danau Malawen.</p><img src='./foto/Danau Malawen.jpg' style='width:150px'>"
       },
       {
-        koordinat: [-1.6569946356896355, 114.92656030721483],
+        koordinat: [-1.656995, 114.926560],
         title: "Lewu Betang Nansarunai",
-        popup: "<h3>Lewu Betang Nansarunai</h3><p>Lewu Betang Nansarunai.</p><img src='./foto/Betang.jpeg' style='width:150px'>"
+        popup: "<h3>Lewu Betang Nansarunai</h3><p class='popup-justify'>Lewu Betang Nansarunai.</p><img src='./foto/Betang.jpeg' style='width:150px'>"
       },
       {
-        koordinat: [-1.6700399613014312, 114.90543916673718],
+        koordinat: [-1.67004, 114.90543],
         title: "Pemandian Banyu Habang",
-        popup: "<h3>Pemandian Banyu Habang</h3><p>Pemandian Banyu Habang.</p><img src='./foto/Banyu Habang.JPG' style='width:150px'>"
+        popup: "<h3>Pemandian Banyu Habang</h3><p class='popup-justify'>Pemandian Banyu Habang.</p><img src='./foto/Banyu Habang.JPG' style='width:150px'>"
       },
       {
         koordinat: [-1.67016, 114.90573],
         title: "Pemandian Wenu Janang",
-        popup: "<h3>Pemandian Wenu Janang</h3><p>Pemandian Wenu Janang.</p><img src='./foto/Wenu Janang.JPG' style='width:150px'>"
+        popup: "<h3>Pemandian Wenu Janang</h3><p class='popup-justify'>Pemandian Wenu Janang.</p><img src='./foto/Wenu Janang.JPG' style='width:150px'>"
       },
       {
         koordinat: [-1.67084, 114.90593],
         title: "Pemandian Cendana Harum",
-        popup: "<h3>Pemandian Cendana Harum</h3><p>Pemandian Cendana Harum</p><img src='./foto/Cendana Harum.JPG' style='width:150px'>"
+        popup: "<h3>Pemandian Cendana Harum</h3><p class='popup-justify'>Pemandian Cendana Harum.</p><img src='./foto/Cendana Harum.JPG' style='width:150px'>"
       },
-     {
+      {
         koordinat: [-1.67044, 114.90530],
         title: "Pemandian Air Merah Jaya Raya",
         popup: `
           <h3>Pemandian Air Merah Jaya Raya</h3>
           <img src='./foto/Air Merah.JPG' style='width:150px'>
-          <p>Pemandian Air Merah Jaya Raya, yang mulai beroperasi sejak tahun 2022, menawarkan pengalaman wisata alam dengan harga tiket masuk sebesar Rp10.000 untuk orang dewasa dan Rp5.000 untuk anak-anak. Destinasi ini merupakan kawasan pemandian yang mengandalkan keindahan alami Sungai Wenu sebagai daya tarik utama, dengan ciri khas air berwarna merah. Pengunjung dapat menikmati berbagai aktivitas, seperti berenang, bermain air, atau sekadar bersantai bersama keluarga dan teman-teman sambil meresapi keasrian alam sekitar. Tempat ini terbuka untuk umum setiap hari dari pukul 06.00 hingga 18.00.</p>
+          <p class='popup-justify'>
+            Pemandian Air Merah Jaya Raya, yang mulai beroperasi sejak tahun 2022, menawarkan pengalaman wisata alam dengan harga tiket masuk sebesar Rp10.000 untuk orang dewasa dan Rp5.000 untuk anak-anak. Destinasi ini merupakan kawasan pemandian yang mengandalkan keindahan alami Sungai Wenu sebagai daya tarik utama, dengan ciri khas air berwarna merah. Pengunjung dapat menikmati berbagai aktivitas, seperti berenang, bermain air, atau sekadar bersantai bersama keluarga dan teman-teman sambil meresapi keasrian alam sekitar. Tempat ini terbuka untuk umum setiap hari dari pukul 06.00 hingga 18.00.
+          </p>`
       },
       {
         koordinat: [-1.65867, 114.92616],
         title: "Mambarak Forest",
-        popup: "<h3>Mambarak Forest</h3><p>Mambarak Forest</p><img src='./foto/Mambarak Forest.JPG' style='width:150px'>"
-      },
+        popup: "<h3>Mambarak Forest</h3><p class='popup-justify'>Mambarak Forest.</p><img src='./foto/Mambarak Forest.JPG' style='width:150px'>"
+      }
     ];
 
-    // Tambahkan semua marker
+    var dataSearch = [];
+
     lokasi.forEach(function(tempat) {
-      L.marker(tempat.koordinat, { title: tempat.title })
-        .addTo(map)
-        .bindPopup(tempat.popup);
+      var marker = L.marker(tempat.koordinat, { title: tempat.title }).bindPopup(tempat.popup);
+      markers.addLayer(marker);
+      dataSearch.push(marker);
     });
+
+    markers.addTo(map);
+
+    // Search Control
+    var searchControl = new L.Control.Search({
+      layer: markers,
+      propertyName: 'title',
+      marker: false,
+      moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, 16); // Zoom saat hasil ditemukan
+      }
+    });
+
+    searchControl.on('search:locationfound', function(e) {
+      e.layer.openPopup();
+    });
+
+    map.addControl(searchControl);
   </script>
 </body>
 </html>
