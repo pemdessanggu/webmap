@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <!-- Leaflet Search Plugin -->
+   <!-- Search versi CDN -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-search@2.9.8/dist/leaflet-search.min.css" />
   <script src="https://unpkg.com/leaflet-search@2.9.8/dist/leaflet-search.min.js"></script>
 
@@ -75,9 +75,10 @@
       "Esri Satelit": esriSat,
       "Esri Topographic": esriTopo
     };
+
     L.control.layers(baseMaps).addTo(map);
 
-    // Data lokasi wisata
+    // Data lokasi
     var lokasi = [
       {
         koordinat: [-1.666007, 114.893982],
@@ -85,7 +86,9 @@
         popup: `
           <h3>Danau Sanggu</h3>
           <img src='./foto/Danau Sanggu.jpeg' style='width:150px'>
-          <p class='popup-justify'>Danau Sanggu.</p>`
+          <p class='popup-justify'>
+          Danau Sanggu.
+          </p>`
       },
       {
         koordinat: [-1.687491, 114.890469],
@@ -93,7 +96,9 @@
         popup: `
           <h3>Danau Malawen</h3>
           <img src='./foto/Danau Malawen.jpg' style='width:150px'>
-          <p class='popup-justify'>Danau Malawen.</p>`
+          <p class='popup-justify'>
+          Danau Malawen.
+          </p>`
       },
       {
         koordinat: [-1.656995, 114.926560],
@@ -102,7 +107,7 @@
           <h3>Lewu Betang Nansarunai</h3>
           <img src='./foto/Betang.jpeg' style='width:150px'>
           <p class='popup-justify'>
-          Betang Nan Sarunai adalah destinasi wisata budaya sejak 2018 untuk melestarikan budaya Dayak. Pengunjung dapat merasakan suasana rumah adat Betang, berkeliling, menikmati permainan ATV, atau berkemah. Tiket: Rp10.000 dewasa, Rp5.000 anak-anak. Buka: 07.30–17.00 WIB.
+          Betang Nan Sarunai adalah destinasi wisata budaya yang berdiri sejak tahun 2018 dan dibangun untuk melestarikan budaya Dayak, khususnya rumah adat Betang, di tengah perkembangan zaman. Nama "Betang Nan Sarunai" sendiri mencerminkan nilai sejarah, di mana "Nan Sarunai" merujuk pada Kerajaan Dayak masa lalu dan "Betang" berarti rumah. Di tempat ini, pengunjung dapat merasakan nuansa khas rumah adat Dayak, berkeliling, berfoto, menikmati permainan ATV dengan tarif Rp20.000 untuk durasi 15–20 menit, melakukan sesi foto atau video dengan latar rumah betang, hingga berkemah menggunakan perlengkapan sendiri. Tiket masuk ke lokasi ini sebesar Rp10.000 untuk dewasa dan Rp5.000 untuk anak-anak, dan destinasi ini buka setiap hari mulai pukul 07.30 hingga 17.00 WIB.
           </p>`
       },
       {
@@ -111,7 +116,9 @@
         popup: `
           <h3>Pemandian Banyu Habang</h3>
           <img src='./foto/Banyu Habang.JPG' style='width:150px'>
-          <p class='popup-justify'>Pemandian Banyu Habang.</p>`
+          <p class='popup-justify'>
+          Pemandian Banyu Habang.
+          </p>`
       },
       {
         koordinat: [-1.67016, 114.90573],
@@ -120,7 +127,7 @@
           <h3>Pemandian Wenu Janang</h3>
           <img src='./foto/Wenu Janang.JPG' style='width:150px'>
           <p class='popup-justify'>
-          Wenu Janang berarti "Sungai Wenu yang ramai". Wisata ini mengandalkan keindahan Sungai Wenu. Buka setiap hari pukul 06.00–18.00. Tiket: Rp10.000 dewasa, Rp5.000 anak-anak.
+          Sesuai dengan arti namanya, Wenu Janang berarti "Sungai Wenu yang ramai". Tempat wisata ini mulai dibuka sejak tahun 2018 dan berlokasi berdekatan dengan Air Merah Jaya Raya, menawarkan jenis wisata yang serupa. Keduanya sama-sama mengandalkan keindahan Sungai Wenu sebagai daya tarik utama. Di Wenu Janang, pengunjung dapat menikmati kegiatan seperti bermain air, berenang, bersantai bersama keluarga, atau menyanyi karaoke sembari menikmati suasana alami yang tenang. Lingkungan yang sejuk dan asri menjadikannya tempat yang ideal untuk relaksasi. Tempat ini buka setiap hari dari pukul 06.00 hingga 18.00, dengan harga tiket masuk yang terjangkau, yaitu Rp10.000 untuk orang dewasa dan Rp5.000 untuk anak-anak.
           </p>`
       },
       {
@@ -130,7 +137,7 @@
           <h3>Pemandian Cendana Harum</h3>
           <img src='./foto/Cendana Harum.JPG' style='width:150px'>
           <p class='popup-justify'>
-          Wisata air bernuansa Bali dengan kolam renang, gazebo, dan mushola. Tiket: Rp10.000 dewasa, Rp5.000 anak-anak. Buka: 07.00–18.00.
+          Cendana Harum adalah destinasi wisata air terbaru di Desa Sanggu yang mulai beroperasi sejak tahun 2022. Menghadirkan konsep permainan air bernuansa Bali, tempat ini menawarkan suasana segar dan cocok untuk rekreasi keluarga. Tersedia berbagai kolam dengan kedalaman berbeda, dari kolam anak-anak hingga kolam dewasa, serta fasilitas pendukung seperti gazebo, area barbeque, dan mushola. Selain berenang dan bersantai, pengunjung juga dapat menikmati waktu luang sambil menanti kolam pemancingan yang sedang dipersiapkan oleh pengelola. Tempat ini buka setiap hari pukul 07.00–18.00, dengan harga tiket masuk Rp10.000 untuk dewasa dan Rp5.000 untuk anak-anak.
           </p>`
       },
       {
@@ -140,30 +147,33 @@
           <h3>Pemandian Air Merah Jaya Raya</h3>
           <img src='./foto/Air Merah.JPG' style='width:150px'>
           <p class='popup-justify'>
-          Mengandalkan keindahan alami Sungai Wenu dengan ciri khas air merah. Tiket: Rp10.000 dewasa, Rp5.000 anak-anak. Buka: 06.00–18.00.
+            Pemandian Air Merah Jaya Raya, yang mulai beroperasi sejak tahun 2022, menawarkan pengalaman wisata alam dengan harga tiket masuk sebesar Rp10.000 untuk orang dewasa dan Rp5.000 untuk anak-anak. Destinasi ini merupakan kawasan pemandian yang mengandalkan keindahan alami Sungai Wenu sebagai daya tarik utama, dengan ciri khas air berwarna merah. Pengunjung dapat menikmati berbagai aktivitas, seperti berenang, bermain air, atau sekadar bersantai bersama keluarga dan teman-teman sambil meresapi keasrian alam sekitar. Tempat ini terbuka untuk umum setiap hari dari pukul 06.00 hingga 18.00.
           </p>`
       },
       {
         koordinat: [-1.65867, 114.92616],
         title: "Mambarak Forest",
         popup: `
-          <h3>Mambarak Forest</h3>
+          <h3 class='popup-justify'>Mambarak Forest</h3>
           <img src='./foto/Mambarak Forest.JPG' style='width:150px'>
-          <p class='popup-justify'>Mambarak Forest.</p>`
+          <p class='popup-justify'>
+          Mambarak Forest.
+          </p>`
       }
     ];
 
-    // Marker Layer
+    // Simpan semua marker ke layer group
     var markersLayer = new L.LayerGroup();
     map.addLayer(markersLayer);
 
+    // Tambahkan marker
     lokasi.forEach(function(tempat) {
       var marker = L.marker(tempat.koordinat, { title: tempat.title })
         .bindPopup(tempat.popup);
       markersLayer.addLayer(marker);
     });
 
-    // Leaflet Search
+    // Tambahkan kontrol pencarian
     var searchControl = new L.Control.Search({
       layer: markersLayer,
       propertyName: 'title',
@@ -181,4 +191,4 @@
   </script>
 
 </body>
-</html>
+</html> search masih blm muncul
